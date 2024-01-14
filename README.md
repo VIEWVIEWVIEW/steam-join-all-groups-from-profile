@@ -13,3 +13,5 @@ To install the user script, follow these steps:
 3. **Join Groups:**
    Once installed, you can visit a Steam profile page. The user script should automatically run, and you should see the additional functionality to join all public Steam profiles.
 
+---
+I wrote this because the script from [KnifesFTW](https://github.com/KniferFTW/steam-join-all-profiles-groups) doesn't work anymore.
