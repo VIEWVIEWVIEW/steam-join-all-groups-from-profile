@@ -28,11 +28,8 @@ async function joinGroups() {
     // Get all group IDs
     const groups = await $(json).find('groupID64');
 
-    // Set params for POST request
-    const params = {
-        action: 'join',
-        sessionID: Cookies.get('sessionid')
-    };
+    // Get session id from cookie
+    const sessionID = Cookies.get('sessionid')
 
     for (let i = 0; i < groups.length; i++) {
         // join the group
@@ -52,7 +49,7 @@ async function joinGroups() {
                 "Cache-Control": "no-cache"
             },
             "referrer": "https://steamcommunity.com/groups/WorldCyberGames2011",
-            "body": "action=join&sessionID=" + params.sessionID,
+            "body": "action=join&sessionID=" + sessionID,
             "method": "POST",
             "mode": "cors"
         });
