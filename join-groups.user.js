@@ -14,19 +14,19 @@
 
 async function joinGroups() {
     // Get the profile ID
-    const profileId = window.location.pathname.split('/').pop();
+    const profileId = window.location.pathname.split('/')[2];
 
     // Log the profile id to the console
     console.log('Profile ID:', profileId);
 
     // Get the profile XML
-    const resProfile = await fetch(`https://steamcommunity.com/id/${profileId}/?xml=1`)
+    const resProfile = await fetch(`https://steamcommunity.com/id/${profileId}/?xml=1`);
 
     // We use jQuery's XML parser to parse XML => json
-    const json = await $.parseXML(await resProfile.text())
+    const json = await $.parseXML(await resProfile.text());
 
     // Get all group IDs
-    const groups = await $(json).find('groupID64')
+    const groups = await $(json).find('groupID64');
 
     // Set params for POST request
     const params = {
@@ -59,11 +59,11 @@ async function joinGroups() {
 
         // Log to console whether we successfully joined or not.
         // The "Join Group" button is only present if we are not in the group.
-        const resHTML = await resGrp.text()
+        const resHTML = await resGrp.text();
         if (!resHTML.includes('Join Group')) {
-            console.log("joined https://steamcommunity.com/gid/" + groups[i].textContent)
+            console.log("joined https://steamcommunity.com/gid/" + groups[i].textContent);
         } {
-            console.warn("failed join https://steamcommunity.com/gid/" + groups[i].textContent)
+            console.warn("failed join https://steamcommunity.com/gid/" + groups[i].textContent);
         }
 
     }
